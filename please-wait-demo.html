@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>jQuery UI Multi Menu Widget</title>
+  <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/cupertino/jquery-ui.css" rel="stylesheet">
+</head>
+
+<body>
+  <h1>PleaseWait Plugin</h1>
+
+  <p>PleaseWait is an event-driven jQuery UI widget that displays a dialog box and updateable progress bar, to indicate to your users that your application is currently busy or processing data.</p>
+
+  <h2>Plugin Options</h2>
+  <p>You can set any of the following options to customize it to fit your needs:</p>
+
+<pre>
+<code>
+// default options
+$('selector').pleasewait({
+  content: null, // content to display in the dialog box
+  on: 'click',  // event to trigger dialog
+  timer: null, // close dialog after set amount of seconds
+
+  dialog: { /* see jQuery UI dialog API */ },
+  progressbar: { /* see jQuery UI progressbar API */ },
+});
+</code>
+</pre>
+
+  <p>NOTE: Options can be set using the <code>data-options</code> attribute as well, and passing it a <code>pleasewait</code> object. For example:</p>
+
+  <pre>
+<code>
+&lt;button data-role="pleasewait" data-options='{ "pleasewait": { "content": "&lt;p&gt;We appreciate your patience.&lt;/p&gt;", "timer": 5 }}'&gt;...&lt;/button&gt;
+</code>
+  </pre>
+
+  <h2>CSS Hooks</h2>
+  <ul>
+    <li>Dialog: <code>.ui-please-wait-dialog</code></li>
+    <li>Progress Bar: <code>.ui-please-wait-progressbar</code></li>
+  </ul>
+
+  <p>NOTE: If you want to hide the 'X' on the dialog, add the following rule to your CSS <code>.ui-please-wait-dialog .ui-dialog-titlebar-close { display: none; }</code></p>
+
+
+  <h2>Plugin Examples</h2>
+  <p>Click the button below to display a PleaseWait dialog with content and progressbar that will close after 5 seconds.</p>
+  <button data-role="pleasewait" data-options='{"pleasewait": { "content": "<p>We appreciate your patience.</p>", "timer": 5 }}'>Timer Example</button>
+
+  <p>The following example will update the progressbar in 20% increments</p>
+  <button data-role="pleasewait" data-options='{"pleasewait": { "progressbar": { "value": 0 } } }' id="please-wait-update">Update Example</button>
+
+
+<!-- local test-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<script src="jquery.ui.please-wait.js"></script>
+
+<script>
+  // jQuery noConflict
+  (function($) {
+    "use strict";
+
+    // jQuery DOM Ready
+    $(function() {
+      // initialize please wait buttons
+      $('[data-role~="pleasewait"]').pleasewait();
+
+      // update please wait example
+      $('#please-wait-update').on('click', function() {
+        var $this = $(this)
+          ,
+            percent = 20,
+
+            update = function() {
+              $this.pleasewait('update', percent);
+
+              if (percent < 100) {
+                percent += 20;
+                setTimeout(update, 1000);
+              }
+            }
+        ;
+
+        update();
+      });
+    }); // DOM Ready
+
+
+
+  })(jQuery);
+</script>
+
+</body>
+</html>
