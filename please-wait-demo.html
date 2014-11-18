@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>jQuery UI Multi Menu Widget</title>
+  <title>jQuery UI Please Wait Widget</title>
   <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/cupertino/jquery-ui.css" rel="stylesheet">
 </head>
 
@@ -33,6 +33,26 @@ $('selector').pleasewait({
   <pre>
 <code>
 &lt;button data-role="pleasewait" data-options='{ "pleasewait": { "content": "&lt;p&gt;We appreciate your patience.&lt;/p&gt;", "timer": 5 }}'&gt;...&lt;/button&gt;
+</code>
+  </pre>
+
+  <h2>Methods</h2>
+  <p>You can call any of the following methods:</p>
+
+  <ul>
+    <li><code>open</code>: opens the pleasewait dialog</li>
+    <li><code>close</code>: closes the pleasewait dialog</li>
+    <li><code>update, <em>integer</em></code>: updates the progressbar within the pleasewait dialog</li>
+  </ul>
+
+  <p>Example:</p>
+  <pre>
+<code>
+// close the dialog
+$(selector).pleasewait('close');
+
+// set the progressbar to 20
+$(selector).pleasewait('update', 20);
 </code>
   </pre>
 
