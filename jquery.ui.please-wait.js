@@ -79,7 +79,6 @@
       // add event to plugin selector
       $trigger.on(o.on + '.pleasewait', function() {
         self.open();
-        console.log('pleasewait triggered')
       });
 
     }, // _bindEvents method
