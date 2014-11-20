@@ -42,6 +42,7 @@ $('selector').pleasewait({
   <ul>
     <li><code>open</code>: opens the pleasewait dialog</li>
     <li><code>close</code>: closes the pleasewait dialog</li>
+    <li><code>destroy</code>: removes the widget functionality completely, deleting the dialog, progress bar and event.</li>
     <li><code>update, <em>integer</em></code>: updates the progressbar within the pleasewait dialog</li>
   </ul>
 
@@ -67,11 +68,12 @@ $(selector).pleasewait('update', 20);
 
   <h2>Plugin Examples</h2>
   <p>Click the button below to display a PleaseWait dialog with content and progressbar that will close after 5 seconds.</p>
-  <button data-role="pleasewait" data-options='{"pleasewait": { "content": "<p>We appreciate your patience.</p>", "timer": 5 }}'>Timer Example</button>
+  <button data-role="pleasewait" data-options='{"pleasewait": { "content": "<p>We appreciate your patience.</p>", "timer": 5, "dialog": { "modal": false } } }'>Timer Example</button>
 
   <p>The following example will update the progressbar in 20% increments</p>
   <button data-role="pleasewait" data-options='{"pleasewait": { "progressbar": { "value": 0 } } }' id="please-wait-update">Update Example</button>
 
+<div id="dialog"><p>a paragraph.</p></div>
 
 <!-- local test-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -85,6 +87,8 @@ $(selector).pleasewait('update', 20);
 
     // jQuery DOM Ready
     $(function() {
+      $('#dialog').dialog();
+
       // initialize please wait buttons
       $('[data-role~="pleasewait"]').pleasewait();
 

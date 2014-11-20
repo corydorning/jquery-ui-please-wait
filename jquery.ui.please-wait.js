@@ -39,24 +39,27 @@
 
     _create: function() {
       // update options with html5 data
-      $.extend(this.options, this.element.data('options').pleasewait);
-
       var self = this
         ,
           o = self.options
         ,
-          // create dialog
-          $dialog = self.$dialog = $('<div/>').addClass('ui-please-wait-dialog').dialog(o.dialog)
+          data = self.element.data('options') && self.element.data('options').pleasewait || {}
+      ;
+
+      $.extend(true, o, data);
+
+          // create dialog div
+      var $dialog = self.$dialog = $('<div/>').addClass('ui-please-wait-dialog')
         ,
           // create progressbar
           $progressbar = self.$progressbar = $('<div/>').addClass('ui-please-wait-progressbar').progressbar(o.progressbar)
       ;
 
-      // append progressbar to dialog and dialog to body
+      // append progressbar to dialog and init dialog
       $dialog
-        .addClass('ui-please-wait-dialog')
         .append(o.content)
         .append($progressbar)
+        .dialog(o.dialog)
       ;
 
       // perform event bindings
@@ -74,8 +77,9 @@
       ;
 
       // add event to plugin selector
-      $trigger.on(o.on, function() {
+      $trigger.on(o.on + '.pleasewait', function() {
         self.open();
+        console.log('pleasewait triggered')
       });
 
     }, // _bindEvents method
@@ -123,8 +127,17 @@
       if (value >= self.$progressbar.progressbar( "option", "max" )) {
         self.close();
       }
-    } // update method
+    }, // update method
 
-  }); // $.widget('multimenu')
+    destroy: function() {
+      var self = this
+      ;
+
+      self.$dialog.dialog('destroy');
+      self.$progressbar.progressbar('destroy');
+      self.element.off(self.options.on + '.pleasewait');
+    } // destroy method
+
+  }); // $.widget('pleasewait')
 })(jQuery);
-// end multimenu
+// end pleasewait
