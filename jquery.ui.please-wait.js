@@ -3,7 +3,7 @@
  * URL: http://corydorning.com/projects/please-wait
  *
  * @author: Cory Dorning
- * @modified: 11/13/2014
+ * @modified: 11/20/2014
  *
  * dependencies: jQuery 1.10+, jQuery UI 1.10+
  *
