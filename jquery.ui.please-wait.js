@@ -3,7 +3,7 @@
  * URL: http://corydorning.com/projects/please-wait
  *
  * @author: Cory Dorning
- * @modified: 11/20/2014
+ * @modified: 11/21/2014
  *
  * dependencies: jQuery 1.10+, jQuery UI 1.10+
  *
@@ -49,7 +49,7 @@
       $.extend(true, o, data);
 
           // create dialog div
-      var $dialog = self.$dialog = $('<div/>').addClass('ui-please-wait-dialog')
+      var $dialog = self.$dialog = $('<div/>')
         ,
           // create progressbar
           $progressbar = self.$progressbar = $('<div/>').addClass('ui-please-wait-progressbar').progressbar(o.progressbar)
@@ -60,6 +60,8 @@
         .append(o.content)
         .append($progressbar)
         .dialog(o.dialog)
+        .parent()
+        .addClass('ui-please-wait-dialog')
       ;
 
       // perform event bindings

@@ -73,8 +73,6 @@ $(selector).pleasewait('update', 20);
   <p>The following example will update the progressbar in 20% increments</p>
   <button data-role="pleasewait" data-options='{"pleasewait": { "progressbar": { "value": 0 } } }' id="please-wait-update">Update Example</button>
 
-<div id="dialog"><p>a paragraph.</p></div>
-
 <!-- local test-->
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
@@ -87,8 +85,6 @@ $(selector).pleasewait('update', 20);
 
     // jQuery DOM Ready
     $(function() {
-      $('#dialog').dialog();
-
       // initialize please wait buttons
       $('[data-role~="pleasewait"]').pleasewait();
 
