@@ -1,6 +1,6 @@
 {
   "name": "jquery-ui-please-wait",
-  "main": ["jquery.ui.please-wait.js"],
+  "main": ["jquery-ui-please-wait.js"],
   "version": "1.0.0",
   "homepage": "https://github.com/corydorning/jquery-ui-please-wait",
   "authors": [

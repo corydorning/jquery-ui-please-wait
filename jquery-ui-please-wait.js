@@ -107,10 +107,7 @@
 
     // close the menu
     close: function() {
-      var self = this
-      ,
-        o = self.options
-      ;
+      var self = this;
 
       // close the dialog
       self.$dialog.dialog('close');
