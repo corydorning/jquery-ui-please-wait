@@ -1,4 +1,4 @@
-/*! jquery.ui.please-wait.js
+/*! jquery-ui-please-wait.js
  *
  * URL: http://corydorning.com/projects/please-wait
  *
